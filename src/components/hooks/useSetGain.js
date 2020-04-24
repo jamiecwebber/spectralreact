@@ -1,11 +1,17 @@
 import { useEffect } from "react";
 
-export default ({ gainNode, gain = 50 } = {}) =>
+import useAudioContext from "./useAudioContext";
+
+export default ({ gainNode, gain = 50 } = {}) => {
+	const { audioContext } = useAudioContext();
+
 	useEffect(
 		() => {
 			if (gainNode) {
-				gainNode.gain.value = gain/100;
+				gainNode.gain.setValueAtTime(gainNode.gain.value, audioContext.currentTime);
+				gainNode.gain.exponentialRampToValueAtTime(gain/100 + 0.001, audioContext.currentTime + 0.05);
 			}
 		},
 		[gain]
 	);
+}
