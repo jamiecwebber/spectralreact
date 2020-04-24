@@ -6,12 +6,10 @@ import CombinationTone from "./components/molecules/CombinationTone";
 
 function App() {
 
+  let frequencies = [650, 750, 850, 950]
   return (
     <div className="App">
-        <CombinationTone />
-        <CombinationTone />
-        <CombinationTone />
-        <CombinationTone />
+        {frequencies.map(freq => <CombinationTone oscFrequency={freq} />)}
     </div>
   );
 }

@@ -5,11 +5,10 @@ import Oscillator from "../atoms/Oscillator";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 
-export default () => {
+export default ({ oscFrequency = 200, oscGain = 50} = {}) => {
 
-  
-  const [frequency, setFrequency] = useState(200);
-  const [gain, setGain] = useState(50);
+  const [frequency, setFrequency] = useState(oscFrequency);
+  const [gain, setGain] = useState(oscGain);
 
   return (
     <div className="CombinationTone">
